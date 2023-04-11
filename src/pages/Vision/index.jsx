@@ -1,9 +1,9 @@
 import React from "react";
 import Page from "../../components/UI/Page";
 
-const Vision = () => {
+const Vision = ({ visionRef }) => {
   return (
-    <div>
+    <div ref={visionRef}>
       <Page>Vision</Page>
     </div>
   );
