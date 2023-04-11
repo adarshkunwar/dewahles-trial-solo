@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Layout from "./HOC/Navigation/Layout";
 
@@ -9,32 +9,39 @@ import Vision from "./pages/Vision";
 
 const App = () => {
   // refs
+
   const homeRef = useRef(null);
   const contactRef = useRef(null);
   const aboutRef = useRef(null);
   const visionRef = useRef(null);
 
+  const [setRf, setSetRef] = useState([]);
+
+  useEffect(() => {
+    setSetRef([
+      { name: "home", ref: homeRef },
+      { name: "contact", ref: contactRef },
+      { name: "about", ref: aboutRef },
+      { name: "vision", ref: visionRef },
+    ]);
+  }, [homeRef, contactRef, aboutRef, visionRef]);
+  // console.log("setRef ", setRf);
+
   const handleScroll = (ref) => {
+    console.log("ref ", ref);
+    if (ref === null) return;
     ref.current.scrollIntoView({
       behavior: "smooth",
       block: "start",
+      duration: 1000,
     });
   };
 
   // if (homeRef.current) console.log(homeRef.current);
-  console.log(homeRef, contactRef, aboutRef, visionRef);
 
   return (
     <div>
-      <Layout
-        handleScroll={handleScroll}
-        refs={[
-          { name: "home", ref: homeRef.current },
-          { name: "contact", ref: contactRef.current },
-          { name: "about", ref: aboutRef.current },
-          { name: "vision", ref: visionRef.current },
-        ]}
-      >
+      <Layout handleScroll={handleScroll} refs={setRf}>
         <div ref={homeRef}>
           <Home />
         </div>

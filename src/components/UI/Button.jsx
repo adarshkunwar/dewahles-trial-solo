@@ -9,7 +9,7 @@ const Button = ({ title, action }) => {
     <div className="relative w-full h-fit">
       <div className="absolute w-full top-0 left-0 right-0 bottom-0">
         <button
-          onClick={action}
+          onClick={() => action()}
           className={`w-full max-w-xs py-2 px-1 bg-orange-200 border-black ${normal} ${hover} ${focus}`}
         >
           {title}

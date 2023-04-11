@@ -11,13 +11,14 @@ const Sidebar = ({ refs, handleScroll }) => {
       />
 
       {refs.map((button, index) => {
-        console.log(button);
+        // console.log(button);
         return (
-          <div>
+          <div key={index}>
             <Button
-              key={index}
               title={button.name}
-              action={handleScroll(button.ref)}
+              action={() => {
+                handleScroll(button.ref);
+              }}
             />
           </div>
         );

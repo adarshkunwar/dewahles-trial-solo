@@ -4,7 +4,7 @@ import Page from "../../components/UI/Page";
 const Contact = () => {
   return (
     <div>
-      <Page>About</Page>
+      <Page>Contact</Page>
     </div>
   );
 };
